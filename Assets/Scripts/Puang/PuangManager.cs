@@ -55,6 +55,7 @@ public class PuangManager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (_state == PuangState.IDLE) return;
         if (collision.gameObject.tag == "Platform") _state = PuangState.RUNNING;
         else if (collision.gameObject.tag == "Obstacle") _state = PuangState.DIE;
 
