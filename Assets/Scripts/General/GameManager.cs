@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public PuangManager puang;
     public UIManager uiManager;
     public PlatformManager platformManager;
+    public ObstacleManager obstacleManager;
     void Start()
     {
         StartCoroutine(ReadyGame());
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
     public void Pause()
     {
         platformManager.StopScroll();
+        obstacleManager.StopGenerate();
         uiManager.ShowPauseWindow();
         puang.PausePuang();
     }
@@ -62,6 +64,7 @@ public class GameManager : MonoBehaviour
     IEnumerator StartGame()
     {
         platformManager.StartScroll();
+        obstacleManager.StartGenerate();
         yield return null;
     }
 
@@ -73,6 +76,7 @@ public class GameManager : MonoBehaviour
         while (!uiManager.countDownDone) yield return new WaitForSeconds(0.01f);
         puang.ResumePuang();
         platformManager.StartScroll();
+        obstacleManager.StartGenerate();
     }
 
 
