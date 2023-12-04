@@ -14,11 +14,17 @@ public enum PuangState
 public class PuangManager : MonoBehaviour
 {
     public Rigidbody2D rb;
+    [SerializeField]
+    private int _jumpPower = 5;
+    
     private PuangState _state = PuangState.IDLE;
+    private PuangState _pausedState;
+    private Vector2 _pausedVelocity;
+    private Coroutine _inputManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(InputManager());
     }
 
     // Update is called once per frame
@@ -26,7 +32,32 @@ public class PuangManager : MonoBehaviour
     {
         
     }
+    public void Init()
+    {
+        _state = PuangState.RUNNING;
+        this.gameObject.transform.position = new Vector2(-6, 2);
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        rb.useAutoMass = true;
+        _inputManager = StartCoroutine(InputManager());
+    }
 
+    public void PausePuang()
+    {
+        _pausedState = _state;
+        _state = PuangState.IDLE;
+        _pausedVelocity = rb.velocity;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        StopCoroutine(_inputManager);
+    }
+
+    public void ResumePuang()
+    {
+        _state = _pausedState;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        rb.useAutoMass = true;
+        rb.velocity = _pausedVelocity;
+        _inputManager = StartCoroutine(InputManager());
+    }
     private IEnumerator InputManager()
     {
         while (_state == PuangState.IDLE) yield return new WaitForSeconds(0.01f);
@@ -39,11 +70,11 @@ public class PuangManager : MonoBehaviour
                     case PuangState.JUMP:
                         _state = PuangState.DOUBLE_JUMP;
                         this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-                        this.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 5), ForceMode2D.Impulse);
+                        this.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, _jumpPower), ForceMode2D.Impulse);
                         break;
                     case PuangState.RUNNING:
                         _state = PuangState.JUMP;
-                        this.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 5), ForceMode2D.Impulse);
+                        this.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, _jumpPower), ForceMode2D.Impulse);
                         break;
                 }
             }
