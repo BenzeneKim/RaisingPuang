@@ -5,8 +5,11 @@ using UnityEngine;
 public class PuangMainScene : MonoBehaviour
 {
 
+    public GlobalVariables globalVariables;
+
     private void OnMouseDown()
     {
-        Debug.Log("Le sprite a été cliqué !");
+        globalVariables.Money++;
+        Debug.Log(globalVariables.Money);
     }
 }
