@@ -4,11 +4,22 @@ using UnityEngine;
 
 public class GlobalVariables : MonoBehaviour
 {
-    public int Money;
+    public static GlobalVariables Instance; // Singleton instance
 
-    private void Start()
+    // Your global variables
+    public float Money;
+
+    private void Awake()
     {
-        Money = 0;
-        Debug.Log(Money);
+        // Ensure there is only one instance of GlobalVariables
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

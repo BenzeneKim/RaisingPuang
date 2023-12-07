@@ -9,7 +9,7 @@ public class PuangMainScene : MonoBehaviour
 
     private void OnMouseDown()
     {
-        globalVariables.Money++;
-        Debug.Log(globalVariables.Money);
+        if (globalVariables.Money < 10000)
+            globalVariables.Money+=100;
     }
 }
