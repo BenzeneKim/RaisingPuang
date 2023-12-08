@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +11,12 @@ public class GameManager : MonoBehaviour
     public UIManager uiManager;
     public PlatformManager platformManager;
     public ObstacleManager obstacleManager;
+    public JellyManager jellyManager;
+
+    public int speed;
+    public static GameManager instance { get; set; }
+    private int _score=0;
+    private int _levelUpCounter = 0;
     void Start()
     {
         StartCoroutine(ReadyGame());
@@ -20,16 +28,44 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void Die()
+    {
+        platformManager.StopScroll();
+        obstacleManager.StopGenerate();
+        jellyManager.StopGenerate();
+        uiManager.ShowEndWindow(_score);
+    }
+
     public void End()
     {
+        StartCoroutine(EndGame());
+    }
+    public void IncScore()
+    {
+        _score++;
+        _levelUpCounter++;
+        if(_levelUpCounter == 50 && speed < 20)
+        {
+            _levelUpCounter = 0;
+            speed++;
+        }
+    }
 
-
+    public GameManager()
+    {
+        if (instance && !instance.Equals(this))
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
     }
 
     public void Pause()
     {
         platformManager.StopScroll();
         obstacleManager.StopGenerate();
+        jellyManager.StopGenerate();
         uiManager.ShowPauseWindow();
         puang.PausePuang();
     }
@@ -38,13 +74,19 @@ public class GameManager : MonoBehaviour
     {
         ///todo : reset code
         ///
+        obstacleManager.Init();
+        jellyManager.Init();
         uiManager.HidePauseWindow();
-        
+        uiManager.HideEndWindow();
+        _score = 0;
+        _levelUpCounter = 0;
+        speed = 10;
         StartCoroutine(ReadyGame());
     }
     public void Resume()
     {
 
+        uiManager.HideEndWindow();
         uiManager.HidePauseWindow();
         StartCoroutine(ResumeGame());
     }
@@ -63,7 +105,11 @@ public class GameManager : MonoBehaviour
 
     IEnumerator StartGame()
     {
+        obstacleManager.Init();
+        jellyManager.Init();
         platformManager.StartScroll();
+        jellyManager.StartGenerate();
+        yield return new WaitForSeconds(1f);
         obstacleManager.StartGenerate();
         yield return null;
     }
@@ -77,6 +123,7 @@ public class GameManager : MonoBehaviour
         puang.ResumePuang();
         platformManager.StartScroll();
         obstacleManager.StartGenerate();
+        jellyManager.StartGenerate();
     }
 
 

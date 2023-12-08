@@ -22,6 +22,14 @@ public class PuangManager : MonoBehaviour
     private Vector2 _pausedVelocity;
     private Coroutine _inputManager;
 
+    [SerializeField]
+    private Sprite _runA;
+    [SerializeField]
+    private Sprite _runB;
+    [SerializeField]
+    private Sprite _die;
+
+    private Coroutine runRefresh;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,13 +38,54 @@ public class PuangManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        switch (_state)
+        {
+            case PuangState.IDLE:
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = _runA;
+                break;
+            case PuangState.RUNNING:
+                if (runRefresh == null) runRefresh = StartCoroutine(RunRefresher());
+                break;
+            case PuangState.DIE:
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = _die;
+                break;
+
+        }
     }
+
+    private IEnumerator RunRefresher()
+    {
+        bool isA = true;
+        while(_state != PuangState.IDLE && _state != PuangState.DIE)
+        {
+            if (_state == PuangState.RUNNING)
+            {
+
+                if (isA)
+                {
+                    this.gameObject.GetComponent<SpriteRenderer>().sprite = _runB;
+                    isA = false;
+                }
+
+                else
+                {
+                    isA = true;
+                    this.gameObject.GetComponent<SpriteRenderer>().sprite = _runA;
+                }
+
+                yield return new WaitForSeconds(0.3f);
+            }
+            else yield return new WaitForSeconds(0.01f);
+        }
+        runRefresh = null;
+    }
+
+
     public void Init()
     {
         _state = PuangState.RUNNING;
         this.gameObject.transform.position = new Vector2(-6, 2);
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
         rb.useAutoMass = true;
         _inputManager = StartCoroutine(InputManager());
     }
@@ -53,7 +102,7 @@ public class PuangManager : MonoBehaviour
     public void ResumePuang()
     {
         _state = _pausedState;
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
         rb.useAutoMass = true;
         rb.velocity = _pausedVelocity;
         _inputManager = StartCoroutine(InputManager());
@@ -82,13 +131,31 @@ public class PuangManager : MonoBehaviour
             
         }
     }
-
-
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (_state == PuangState.IDLE) return;
         if (collision.gameObject.tag == "Platform") _state = PuangState.RUNNING;
-        else if (collision.gameObject.tag == "Obstacle") _state = PuangState.DIE;
+        else if (collision.gameObject.tag == "Obstacle") Die();
+    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Jelly")
+        {
+            GameManager.instance.IncScore();
+            collision.gameObject.SetActive(false);
+        }
+
+    }
+
+    private void Die()
+    {
+
+        _state = PuangState.DIE;
+        GameManager.instance.Die();
+        _pausedVelocity = rb.velocity;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        StopCoroutine(_inputManager);
     }
 }

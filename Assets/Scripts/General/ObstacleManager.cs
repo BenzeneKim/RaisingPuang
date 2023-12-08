@@ -8,31 +8,49 @@ public class ObstacleManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> _obstacles = new List<GameObject>(5);
     private GameObject _activedObstacle;
-    
+    public Vector3 activatedObstaclePoint { get { return _activedObstacle.transform.GetChild(0).gameObject.transform.position; } }
+    public bool isObstacleActivated { get { return _activedObstacle != null; } }
     [SerializeField]
     private int speed;
-
+    private bool updatePosition = false;
     void Start()
     {
-        foreach (GameObject obj in _obstacles)
-            obj.SetActive(false);
-        
+        Init();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(updatePosition)
+        {
+
+            if (_activedObstacle != null)
+            {
+                _activedObstacle.transform.Translate(new Vector2(-1, 0) * Time.deltaTime * GameManager.instance.speed, 0);
+                if (_activedObstacle.transform.position.x < -15)
+                {
+                    _activedObstacle.SetActive(false);
+                    _activedObstacle = null;
+                }
+            }
+        }
     }
 
+    public void Init()
+    {
+        foreach (GameObject obj in _obstacles)
+            obj.SetActive(false);
+    }
 
     public void StartGenerate()
     {
+        updatePosition = true;
         StartCoroutine(Generator());
         StartCoroutine(UpdatePosition());
     }
     public void StopGenerate()
     {
+        updatePosition = false;
         StopAllCoroutines();
     }
 
@@ -50,9 +68,9 @@ public class ObstacleManager : MonoBehaviour
                 {
                     int ind = Random.Range(0, _obstacles.Count);
                     _activedObstacle = _obstacles[ind];
-                    _activedObstacle.transform.position = new Vector2(15, -1);
+                    _activedObstacle.transform.position = new Vector2(15, _activedObstacle.transform.position.y);
                     _activedObstacle.SetActive(true);
-                    Debug.Log($"{ind} activated");
+                    //Debug.Log($"{ind} activated");
                     yield return new WaitForSeconds(0.1f);
 
                 }
@@ -67,16 +85,9 @@ public class ObstacleManager : MonoBehaviour
     {
         while (true) 
         {
-            if (_activedObstacle != null)
-            { 
-                _activedObstacle.transform.Translate(new Vector2(-1, 0) * Time.deltaTime * speed, 0);
-                if (_activedObstacle.transform.position.x < -15)
-                {
-                    _activedObstacle.SetActive(false);
-                    _activedObstacle = null;
-                }
-            }
             yield return new WaitForSeconds(0.01f);
         }
     }
+
+    
 }

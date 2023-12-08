@@ -316,7 +316,7 @@ namespace TMPro.Examples
                             // Draw Region
                             DrawRectangle(bottomLeft, topLeft, topRight, bottomRight, wordColor);
 
-                            //Debug.Log("End Word Region at [" + currentCharInfo.character + "]");
+                            //Debug.Log("Die Word Region at [" + currentCharInfo.character + "]");
                         }
                     }
 
@@ -333,7 +333,7 @@ namespace TMPro.Examples
                         // Draw Region
                         DrawRectangle(bottomLeft, topLeft, topRight, bottomRight, wordColor);
 
-                        //Debug.Log("End Word Region at [" + currentCharInfo.character + "]");
+                        //Debug.Log("Die Word Region at [" + currentCharInfo.character + "]");
                     }
                     // If Word is split on more than one line.
                     else if (isBeginRegion && currentLine != m_TextInfo.characterInfo[characterIndex + 1].lineNumber)
@@ -347,7 +347,7 @@ namespace TMPro.Examples
 
                         // Draw Region
                         DrawRectangle(bottomLeft, topLeft, topRight, bottomRight, wordColor);
-                        //Debug.Log("End Word Region at [" + currentCharInfo.character + "]");
+                        //Debug.Log("Die Word Region at [" + currentCharInfo.character + "]");
                         maxAscender = -Mathf.Infinity;
                         minDescender = Mathf.Infinity;
 
@@ -422,7 +422,7 @@ namespace TMPro.Examples
                             // Draw Region
                             DrawRectangle(bottomLeft, topLeft, topRight, bottomRight, linkColor);
 
-                            //Debug.Log("End Word Region at [" + currentCharInfo.character + "]");
+                            //Debug.Log("Die Word Region at [" + currentCharInfo.character + "]");
                         }
                     }
 
@@ -439,7 +439,7 @@ namespace TMPro.Examples
                         // Draw Region
                         DrawRectangle(bottomLeft, topLeft, topRight, bottomRight, linkColor);
 
-                        //Debug.Log("End Word Region at [" + currentCharInfo.character + "]");
+                        //Debug.Log("Die Word Region at [" + currentCharInfo.character + "]");
                     }
                     // If Link is split on more than one line.
                     else if (isBeginRegion && currentLine != textInfo.characterInfo[characterIndex + 1].lineNumber)
@@ -456,7 +456,7 @@ namespace TMPro.Examples
 
                         maxAscender = -Mathf.Infinity;
                         minDescender = Mathf.Infinity;
-                        //Debug.Log("End Word Region at [" + currentCharInfo.character + "]");
+                        //Debug.Log("Die Word Region at [" + currentCharInfo.character + "]");
                     }
                 }
 
