@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-    public GameObject ShopBtn; // Drag your shop UI GameObject here in the Inspector
+    public GameObject ShopBtn; 
 
     private void Start()
     {
-        // Assurez-vous que le shop est désactivé au démarrage
         if (ShopBtn != null)
         {
             ShopBtn.SetActive(false);
@@ -17,7 +16,6 @@ public class Shop : MonoBehaviour
 
     private void OnMouseDown()
     {
-        // Affiche ou masque le shop lors du clic sur l'icône de shop
         ToggleShop();
     }
 
@@ -25,7 +23,6 @@ public class Shop : MonoBehaviour
     {
         if (ShopBtn != null)
         {
-            // Inverse l'état actuel du shop (active/désactivé)
             ShopBtn.SetActive(!ShopBtn.activeSelf);
         }
     }

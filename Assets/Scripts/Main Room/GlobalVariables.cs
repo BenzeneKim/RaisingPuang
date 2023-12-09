@@ -8,6 +8,7 @@ public class GlobalVariables : MonoBehaviour
 
     // Your global variables
     public float Money;
+    public bool alreadyClothed;
 
     private void Awake()
     {
