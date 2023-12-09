@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +14,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance { get; set; }
     private int _score=0;
     private int _levelUpCounter = 0;
+    private int _destinationScore = 50;
     void Start()
     {
         StartCoroutine(ReadyGame());
@@ -44,11 +42,14 @@ public class GameManager : MonoBehaviour
     {
         _score++;
         _levelUpCounter++;
-        if(_levelUpCounter == 50 && speed < 20)
+        if(_levelUpCounter == _destinationScore && speed < 20)
         {
             _levelUpCounter = 0;
             speed++;
+            _destinationScore += 30;
+            uiManager.LevelUp();
         }
+        uiManager.UpdateCanState((float)_levelUpCounter / (float)_destinationScore);
     }
 
     public GameManager()
@@ -93,6 +94,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ReadyGame()
     {
+        uiManager.ResetCanStae();
         puang.Init();
         StartCoroutine (uiManager.fadeScreen.FadeIn());
         yield return null;
@@ -105,6 +107,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator StartGame()
     {
+        puang.Run();
         obstacleManager.Init();
         jellyManager.Init();
         platformManager.StartScroll();

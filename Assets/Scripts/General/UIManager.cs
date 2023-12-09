@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -16,8 +18,11 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject endWindow;
     [SerializeField]
+    private GameObject _levelupSign;
+    [SerializeField]
     private TextMeshProUGUI finalScoreTMP;
-
+    [SerializeField]
+    private Image _canFill;
 
     void Start()
     {
@@ -47,6 +52,29 @@ public class UIManager : MonoBehaviour
     {
         endWindow.SetActive(false);
     }
+
+    public void LevelUp()
+    {
+        StartCoroutine(LevelUpCor());
+    }
+
+    public void ResetCanStae()
+    {
+        _canFill.fillAmount = 0;
+    }
+
+    internal void UpdateCanState(float rate)
+    {
+        _canFill.fillAmount = rate;
+    }
+
+    IEnumerator LevelUpCor()
+    {
+        _levelupSign.SetActive(true);
+        yield return new WaitForSeconds(1);
+        _levelupSign.SetActive(false);
+    }
+
     public IEnumerator Countdown()
     {
         countDownDone = false;

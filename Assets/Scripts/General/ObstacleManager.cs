@@ -10,8 +10,7 @@ public class ObstacleManager : MonoBehaviour
     private GameObject _activedObstacle;
     public Vector3 activatedObstaclePoint { get { return _activedObstacle.transform.GetChild(0).gameObject.transform.position; } }
     public bool isObstacleActivated { get { return _activedObstacle != null; } }
-    [SerializeField]
-    private int speed;
+
     private bool updatePosition = false;
     void Start()
     {
@@ -23,7 +22,6 @@ public class ObstacleManager : MonoBehaviour
     {
         if(updatePosition)
         {
-
             if (_activedObstacle != null)
             {
                 _activedObstacle.transform.Translate(new Vector2(-1, 0) * Time.deltaTime * GameManager.instance.speed, 0);
@@ -46,7 +44,6 @@ public class ObstacleManager : MonoBehaviour
     {
         updatePosition = true;
         StartCoroutine(Generator());
-        StartCoroutine(UpdatePosition());
     }
     public void StopGenerate()
     {
@@ -81,13 +78,4 @@ public class ObstacleManager : MonoBehaviour
         }
     }
 
-    IEnumerator UpdatePosition()
-    {
-        while (true) 
-        {
-            yield return new WaitForSeconds(0.01f);
-        }
-    }
-
-    
 }

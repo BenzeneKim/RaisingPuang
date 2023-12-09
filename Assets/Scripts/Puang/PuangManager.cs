@@ -27,6 +27,12 @@ public class PuangManager : MonoBehaviour
     [SerializeField]
     private Sprite _runB;
     [SerializeField]
+    private Sprite _runC;
+    [SerializeField]
+    private Sprite _runD;
+    [SerializeField]
+    private Sprite _jump;
+    [SerializeField]
     private Sprite _die;
 
     private Coroutine runRefresh;
@@ -41,10 +47,16 @@ public class PuangManager : MonoBehaviour
         switch (_state)
         {
             case PuangState.IDLE:
-                this.gameObject.GetComponent<SpriteRenderer>().sprite = _runA;
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = _runD;
                 break;
             case PuangState.RUNNING:
                 if (runRefresh == null) runRefresh = StartCoroutine(RunRefresher());
+                break;
+            case PuangState.JUMP:
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = _jump;
+                break;
+            case PuangState.DOUBLE_JUMP:
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = _jump;
                 break;
             case PuangState.DIE:
                 this.gameObject.GetComponent<SpriteRenderer>().sprite = _die;
@@ -55,39 +67,52 @@ public class PuangManager : MonoBehaviour
 
     private IEnumerator RunRefresher()
     {
-        bool isA = true;
-        while(_state != PuangState.IDLE && _state != PuangState.DIE)
+        int imageIndex = 0;
+        while(_state == PuangState.RUNNING)
         {
-            if (_state == PuangState.RUNNING)
+
+            switch (imageIndex)
             {
-
-                if (isA)
-                {
-                    this.gameObject.GetComponent<SpriteRenderer>().sprite = _runB;
-                    isA = false;
-                }
-
-                else
-                {
-                    isA = true;
+                case 0:
                     this.gameObject.GetComponent<SpriteRenderer>().sprite = _runA;
-                }
+                    imageIndex = 1;
+                    break;
+                case 1:
+                    this.gameObject.GetComponent<SpriteRenderer>().sprite = _runB;
+                    imageIndex = 2;
+                    break;
+                case 2:
+                    this.gameObject.GetComponent<SpriteRenderer>().sprite = _runC;
+                    imageIndex = 3;
+                    break;
+                case 3:
+                    this.gameObject.GetComponent<SpriteRenderer>().sprite = _runD;
+                    imageIndex = 0;
+                    break;
 
-                yield return new WaitForSeconds(0.3f);
+                    
             }
-            else yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.15f * 10 / GameManager.instance.speed);
         }
+
+            
         runRefresh = null;
     }
 
 
     public void Init()
     {
-        _state = PuangState.RUNNING;
+        _state = PuangState.IDLE;
         this.gameObject.transform.position = new Vector2(-6, 2);
         rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
         rb.useAutoMass = true;
         _inputManager = StartCoroutine(InputManager());
+    }
+
+    public void Run()
+    {
+        _state = PuangState.RUNNING;
+
     }
 
     public void PausePuang()

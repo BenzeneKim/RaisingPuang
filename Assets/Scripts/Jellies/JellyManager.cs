@@ -11,10 +11,7 @@ public class JellyManager: MonoBehaviour
     private GameObject _activedObstacle;
     [SerializeField]
     private ObstacleManager _obstacleManager;
-
-    [SerializeField]
-    private int _speed;
-
+    
     [SerializeField]
     private float _period;
 
@@ -57,7 +54,6 @@ public class JellyManager: MonoBehaviour
     {
         updatePosition = true;
         StartCoroutine(Generator());
-        StartCoroutine(UpdatePosition());
     }
     public void StopGenerate()
     {
@@ -78,9 +74,9 @@ public class JellyManager: MonoBehaviour
                     {
                         float distance = _obstacleManager.activatedObstaclePoint.x - 12;
                         float yValue = -_parabolaA * distance * distance + _parabolaB + _obstacleManager.activatedObstaclePoint.y;
-                        unactivatedJelly.transform.position = (yValue < -0.5f) ? new Vector2(12, -0.5f) : new Vector2(12, yValue);
+                        unactivatedJelly.transform.position = (yValue < _defaultHeight) ? new Vector2(12, _defaultHeight) : new Vector2(12, yValue);
                     }
-                    else unactivatedJelly.transform.position = new Vector2(12, -0.5f);
+                    else unactivatedJelly.transform.position = new Vector2(12, _defaultHeight);
                     break;
                 }
 
@@ -89,12 +85,4 @@ public class JellyManager: MonoBehaviour
         }
     }
 
-    IEnumerator UpdatePosition()
-    {
-        while (true)
-        {
-            
-            yield return new WaitForSeconds(0.01f);
-        }
-    }
 }

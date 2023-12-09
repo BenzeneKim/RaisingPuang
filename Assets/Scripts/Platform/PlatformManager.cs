@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlatformManager : MonoBehaviour
 {
     public SpriteRenderer[] tiles;
-    public float speed;
 
     private SpriteRenderer temp;
     private Coroutine scroller;
@@ -51,7 +50,7 @@ public class PlatformManager : MonoBehaviour
                             temp = tiles[j];
                     }
 
-                    tiles[i].transform.position = new Vector2(temp.transform.position.x + 5, -5);
+                    tiles[i].transform.position = new Vector2(temp.transform.position.x + 5, -4.5f);
                 }
             }
             for (int i = 0; i < tiles.Length; i++)
