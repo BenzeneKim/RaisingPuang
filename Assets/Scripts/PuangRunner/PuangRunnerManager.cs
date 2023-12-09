@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
-
-public class GameManager : MonoBehaviour
+using UnityEngine.SceneManagement;
+public class PuangRunnerManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public PuangManager puang;
@@ -9,9 +9,10 @@ public class GameManager : MonoBehaviour
     public PlatformManager platformManager;
     public ObstacleManager obstacleManager;
     public JellyManager jellyManager;
+    public BackgroundController backgroundController;
 
     public int speed;
-    public static GameManager instance { get; set; }
+    public static PuangRunnerManager instance { get; set; }
     private int _score=0;
     private int _levelUpCounter = 0;
     private int _destinationScore = 50;
@@ -29,9 +30,11 @@ public class GameManager : MonoBehaviour
     public void Die()
     {
         platformManager.StopScroll();
+        backgroundController.StopScroll();
         obstacleManager.StopGenerate();
         jellyManager.StopGenerate();
         uiManager.ShowEndWindow(_score);
+        GameManager.Instance.Jelly += _score;
     }
 
     public void End()
@@ -42,17 +45,16 @@ public class GameManager : MonoBehaviour
     {
         _score++;
         _levelUpCounter++;
-        if(_levelUpCounter == _destinationScore && speed < 20)
+        if (_levelUpCounter == _destinationScore && speed < 20)
         {
             _levelUpCounter = 0;
             speed++;
             _destinationScore += 30;
-            uiManager.LevelUp();
         }
-        uiManager.UpdateCanState((float)_levelUpCounter / (float)_destinationScore);
+        uiManager.UpdateScore(_score);
     }
 
-    public GameManager()
+    public PuangRunnerManager()
     {
         if (instance && !instance.Equals(this))
         {
@@ -65,6 +67,7 @@ public class GameManager : MonoBehaviour
     public void Pause()
     {
         platformManager.StopScroll();
+        backgroundController.StopScroll();
         obstacleManager.StopGenerate();
         jellyManager.StopGenerate();
         uiManager.ShowPauseWindow();
@@ -94,7 +97,6 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ReadyGame()
     {
-        uiManager.ResetCanStae();
         puang.Init();
         StartCoroutine (uiManager.fadeScreen.FadeIn());
         yield return null;
@@ -111,6 +113,7 @@ public class GameManager : MonoBehaviour
         obstacleManager.Init();
         jellyManager.Init();
         platformManager.StartScroll();
+        backgroundController.StartScroll();
         jellyManager.StartGenerate();
         yield return new WaitForSeconds(1f);
         obstacleManager.StartGenerate();
@@ -125,6 +128,7 @@ public class GameManager : MonoBehaviour
         while (!uiManager.countDownDone) yield return new WaitForSeconds(0.01f);
         puang.ResumePuang();
         platformManager.StartScroll();
+        backgroundController.StartScroll();
         obstacleManager.StartGenerate();
         jellyManager.StartGenerate();
     }
@@ -133,6 +137,7 @@ public class GameManager : MonoBehaviour
     IEnumerator EndGame()
     {
         uiManager.fadeScreen.FadeOut();
+        SceneManager.LoadScene(0);
         yield return null;
     }
 

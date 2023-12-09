@@ -6,36 +6,32 @@ using TMPro;
 
 public class MoneyBar : MonoBehaviour
 {
-    static Image Bar;
     public static TextMeshProUGUI Txt; // Use TextMeshProUGUI for TextMeshPro text
-    public GlobalVariables globalVariables;
 
     // Assuming max is always 10000, you can adjust this based on your needs
     private float max = 10000;
 
     private void Start()
     {
-        Bar = GetComponent<Image>();
         Txt = GetComponentInChildren<TextMeshProUGUI>();
         Txt.text = "0";
     }
 
-    private void UpdateBar(float money)
+    private void UpdateBar(int money)
     {
         float percentage = money / max;
-        Bar.fillAmount = percentage;
-        Txt.text = money.ToString("C");
+        Txt.text = $"$ {GameManager.Instance.Money}";
     }
 
     private void Update()
     {
-        UpdateBar(globalVariables.Money);
+        UpdateBar(GameManager.Instance.Money);
     }
 
     // This method is called whenever you want to update the bar with a specific value
-    public void SetMoney(float money)
+    public void SetMoney(int money)
     {
-        globalVariables.Money = money;
+        GameManager.Instance.Money = money;
         UpdateBar(money);
     }
 }

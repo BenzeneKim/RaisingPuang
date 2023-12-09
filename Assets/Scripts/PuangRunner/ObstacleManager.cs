@@ -24,7 +24,7 @@ public class ObstacleManager : MonoBehaviour
         {
             if (_activedObstacle != null)
             {
-                _activedObstacle.transform.Translate(new Vector2(-1, 0) * Time.deltaTime * GameManager.instance.speed, 0);
+                _activedObstacle.transform.Translate(new Vector2(-1, 0) * Time.deltaTime * PuangRunnerManager.instance.speed, 0);
                 if (_activedObstacle.transform.position.x < -15)
                 {
                     _activedObstacle.SetActive(false);

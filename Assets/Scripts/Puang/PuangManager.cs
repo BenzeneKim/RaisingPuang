@@ -92,7 +92,7 @@ public class PuangManager : MonoBehaviour
 
                     
             }
-            yield return new WaitForSeconds(0.15f * 10 / GameManager.instance.speed);
+            yield return new WaitForSeconds(0.15f * 10 / PuangRunnerManager.instance.speed);
         }
 
             
@@ -149,6 +149,7 @@ public class PuangManager : MonoBehaviour
                     case PuangState.RUNNING:
                         _state = PuangState.JUMP;
                         this.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, _jumpPower), ForceMode2D.Impulse);
+                        yield return new WaitForSeconds(0.1f);
                         break;
                 }
             }
@@ -168,7 +169,7 @@ public class PuangManager : MonoBehaviour
     {
         if (collision.gameObject.tag == "Jelly")
         {
-            GameManager.instance.IncScore();
+            PuangRunnerManager.instance.IncScore();
             collision.gameObject.SetActive(false);
         }
 
@@ -178,7 +179,7 @@ public class PuangManager : MonoBehaviour
     {
 
         _state = PuangState.DIE;
-        GameManager.instance.Die();
+        PuangRunnerManager.instance.Die();
         _pausedVelocity = rb.velocity;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         StopCoroutine(_inputManager);

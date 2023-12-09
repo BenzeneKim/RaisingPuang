@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class PuangMainScene : MonoBehaviour
 {
-
-    public GlobalVariables globalVariables;
-
     private void OnMouseDown()
     {
-        if (globalVariables.Money < 10000)
-            globalVariables.Money+=1000;
+        if (GameManager.Instance.Money < 100000)
+            GameManager.Instance.Money+=100*GameManager.Instance.PuangAge;
     }
 }

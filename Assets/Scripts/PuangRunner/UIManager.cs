@@ -18,11 +18,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject endWindow;
     [SerializeField]
-    private GameObject _levelupSign;
-    [SerializeField]
     private TextMeshProUGUI finalScoreTMP;
     [SerializeField]
-    private Image _canFill;
+    private TextMeshProUGUI _scoreBar;
 
     void Start()
     {
@@ -34,6 +32,11 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void UpdateScore(int _score)
+    {
+        _scoreBar.text = _score.ToString();
     }
     public void ShowPauseWindow()
     {
@@ -53,30 +56,12 @@ public class UIManager : MonoBehaviour
         endWindow.SetActive(false);
     }
 
-    public void LevelUp()
-    {
-        StartCoroutine(LevelUpCor());
-    }
 
-    public void ResetCanStae()
-    {
-        _canFill.fillAmount = 0;
-    }
-
-    internal void UpdateCanState(float rate)
-    {
-        _canFill.fillAmount = rate;
-    }
-
-    IEnumerator LevelUpCor()
-    {
-        _levelupSign.SetActive(true);
-        yield return new WaitForSeconds(1);
-        _levelupSign.SetActive(false);
-    }
 
     public IEnumerator Countdown()
     {
+
+        _scoreBar.text = "0";
         countDownDone = false;
         _countdown[0].active = true;
         _countdown[1].active = false;

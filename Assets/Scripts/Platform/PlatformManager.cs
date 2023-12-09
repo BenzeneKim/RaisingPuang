@@ -16,21 +16,12 @@ public class PlatformManager : MonoBehaviour
     public void StartScroll()
     {
         updatePosition=true;
-        scroller = StartCoroutine(ScrollPlatforms());
     }
     public void StopScroll()
     {
         updatePosition=false;
-        if (scroller != null) StopCoroutine(scroller);
     }
 
-    private IEnumerator ScrollPlatforms()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(0.01f);
-        }
-    }
     void Start()
     {
         temp = tiles[0];
@@ -55,7 +46,7 @@ public class PlatformManager : MonoBehaviour
             }
             for (int i = 0; i < tiles.Length; i++)
             {
-                tiles[i].transform.Translate(new Vector2(-1, 0) * Time.deltaTime * GameManager.instance.speed);
+                tiles[i].transform.Translate(new Vector2(-1, 0) * Time.deltaTime * PuangRunnerManager.instance.speed);
             }
         }
     }

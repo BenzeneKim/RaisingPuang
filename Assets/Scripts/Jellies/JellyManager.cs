@@ -35,7 +35,7 @@ public class JellyManager: MonoBehaviour
 
             foreach (GameObject activatedJelly in _jellies)
             {
-                activatedJelly.transform.Translate(new Vector2(-1, 0) * Time.deltaTime * GameManager.instance.speed, 0);
+                activatedJelly.transform.Translate(new Vector2(-1, 0) * Time.deltaTime * PuangRunnerManager.instance.speed, 0);
                 if (activatedJelly.transform.position.x < -12)
                 {
                     activatedJelly.SetActive(false);

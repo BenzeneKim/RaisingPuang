@@ -6,7 +6,8 @@ public class EquipItem : MonoBehaviour
 {
     public GameObject targetButton;
     public GameObject Item;
-
+    [SerializeField] GameManager globalVariables;
+    [SerializeField] int index;
     private void Awake()
     {
         if (Item != null)
@@ -21,6 +22,10 @@ public class EquipItem : MonoBehaviour
         {
             this.gameObject.SetActive(false);
             targetButton.SetActive(true);
+            if(Item.active)
+                globalVariables.State -= (int)Mathf.Pow(3, index);
+            else
+                globalVariables.State += (int)Mathf.Pow(3, index);
             Item.SetActive(!Item.activeSelf);
         }
     }
