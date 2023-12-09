@@ -12,6 +12,7 @@ public class GlobalVariables : MonoBehaviour
 
     private void Awake()
     {
+        alreadyClothed = false;
         // Ensure there is only one instance of GlobalVariables
         if (Instance == null)
         {

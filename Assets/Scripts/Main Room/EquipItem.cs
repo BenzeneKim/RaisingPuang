@@ -4,22 +4,11 @@ using UnityEngine;
 
 public class EquipItem : MonoBehaviour
 {
-    public GameObject EquipBtn;
-    public GameObject EquippedBtn;
+    public GameObject targetButton;
     public GameObject Item;
 
     private void Awake()
     {
-        if (EquipBtn != null)
-        {
-            EquipBtn.SetActive(false);
-        }
-
-        if (EquippedBtn != null)
-        {
-            EquippedBtn.SetActive(false);
-        }
-
         if (Item != null)
         {
             Item.SetActive(false);
@@ -28,10 +17,10 @@ public class EquipItem : MonoBehaviour
 
     public void ToggleEquipBtn()
     {
-        if (EquipBtn != null && EquippedBtn != null)
+        if (targetButton != null)
         {
-            EquipBtn.SetActive(!EquipBtn.activeSelf);
-            EquippedBtn.SetActive(!EquippedBtn.activeSelf);
+            this.gameObject.SetActive(false);
+            targetButton.SetActive(true);
             Item.SetActive(!Item.activeSelf);
         }
     }

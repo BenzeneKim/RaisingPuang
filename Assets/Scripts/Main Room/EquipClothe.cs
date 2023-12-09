@@ -12,29 +12,25 @@ public class EquipClothe : MonoBehaviour
 
     private void Start()
     {
-        if (EquipBtn != null)
-        {
-            EquipBtn.SetActive(true);
-        }
-
-        if (EquippedBtn != null)
-        {
-            EquippedBtn.SetActive(false);
-        }
-
-        globalVariables.alreadyClothed = false;
         Puang.SetActive(true);
     }
 
     public void ToggleEquipBtn()
     {
-        if (globalVariables.alreadyClothed == false || EquippedBtn.activeSelf == true)
-        {
-                EquipBtn.SetActive(!EquipBtn.activeSelf);
-                EquippedBtn.SetActive(!EquippedBtn.activeSelf);
-                Puang.GetComponent<SpriteRenderer>().sprite = Item;
-                globalVariables.alreadyClothed = !globalVariables.alreadyClothed;
-        }
+        if (globalVariables.alreadyClothed) return;
+        EquipBtn.SetActive(false);
+        EquippedBtn.SetActive(true);
+        Puang.GetComponent<SpriteRenderer>().sprite = Item;
+        globalVariables.alreadyClothed = true;
+    }
+
+    public void ToggleEquippedBtn()
+    {
+        if (!globalVariables.alreadyClothed) return;
+        EquipBtn.SetActive(true);
+        EquippedBtn.SetActive(false);
+        Puang.GetComponent<SpriteRenderer>().sprite = Item;
+        globalVariables.alreadyClothed = false;
     }
 }
 

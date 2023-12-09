@@ -701,8 +701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5727051aa04167469de2d03ca1bd0c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EquipBtn: {fileID: 988314852}
-  EquippedBtn: {fileID: 129286045}
+  targetButton: {fileID: 988314852}
   Item: {fileID: 1586486252}
 --- !u!114 &129286048
 MonoBehaviour:
@@ -944,10 +943,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e4fdb4a064d2d4295069c2e38c1663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BuyBtn: {fileID: 150643862}
-  BuyText: {fileID: 1527339197}
-  EquipBtn: {fileID: 1484918}
   globalVariables: {fileID: 1040025202}
+  _BuyBtn: {fileID: 150643862}
+  _EquipBtn: {fileID: 1484918}
+  _EquippedBtn: {fileID: 1903345828}
+  _Item: {fileID: 0}
 --- !u!1 &188637027
 GameObject:
   m_ObjectHideFlags: 0
@@ -1394,10 +1394,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e4fdb4a064d2d4295069c2e38c1663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BuyBtn: {fileID: 316157709}
-  BuyText: {fileID: 2128550322}
-  EquipBtn: {fileID: 190040190}
   globalVariables: {fileID: 1040025202}
+  _BuyBtn: {fileID: 316157709}
+  _EquipBtn: {fileID: 190040190}
+  _EquippedBtn: {fileID: 1233778373}
+  _Item: {fileID: 0}
 --- !u!1 &321978910
 GameObject:
   m_ObjectHideFlags: 0
@@ -1768,10 +1769,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e4fdb4a064d2d4295069c2e38c1663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BuyBtn: {fileID: 374174630}
-  BuyText: {fileID: 1757231828}
-  EquipBtn: {fileID: 0}
   globalVariables: {fileID: 1040025202}
+  _BuyBtn: {fileID: 374174630}
+  _EquipBtn: {fileID: 856256184}
+  _EquippedBtn: {fileID: 1274092942}
+  _Item: {fileID: 1470530981}
 --- !u!1 &388451169
 GameObject:
   m_ObjectHideFlags: 0
@@ -2025,7 +2027,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 399774216}
         m_TargetAssemblyTypeName: EquipClothe, Assembly-CSharp
-        m_MethodName: ToggleEquipBtn
+        m_MethodName: ToggleEquippedBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2218,8 +2220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5727051aa04167469de2d03ca1bd0c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EquipBtn: {fileID: 408374309}
-  EquippedBtn: {fileID: 1867788443}
+  targetButton: {fileID: 1867788443}
   Item: {fileID: 1519374814}
 --- !u!1 &451925066
 GameObject:
@@ -2323,7 +2324,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 451925068}
         m_TargetAssemblyTypeName: EquipClothe, Assembly-CSharp
-        m_MethodName: ToggleEquipBtn
+        m_MethodName: ToggleEquippedBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3126,10 +3127,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e4fdb4a064d2d4295069c2e38c1663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BuyBtn: {fileID: 589017775}
-  BuyText: {fileID: 1950943933}
-  EquipBtn: {fileID: 408374309}
   globalVariables: {fileID: 1040025202}
+  _BuyBtn: {fileID: 589017775}
+  _EquipBtn: {fileID: 408374309}
+  _EquippedBtn: {fileID: 1867788443}
+  _Item: {fileID: 1519374814}
 --- !u!1 &611478682
 GameObject:
   m_ObjectHideFlags: 0
@@ -3954,8 +3956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5727051aa04167469de2d03ca1bd0c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EquipBtn: {fileID: 1266062108}
-  EquippedBtn: {fileID: 672735992}
+  targetButton: {fileID: 1266062108}
   Item: {fileID: 188637027}
 --- !u!114 &672735995
 MonoBehaviour:
@@ -4197,10 +4198,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e4fdb4a064d2d4295069c2e38c1663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BuyBtn: {fileID: 726199927}
-  BuyText: {fileID: 1609990803}
-  EquipBtn: {fileID: 65507400}
   globalVariables: {fileID: 1040025202}
+  _BuyBtn: {fileID: 726199927}
+  _EquipBtn: {fileID: 65507400}
+  _EquippedBtn: {fileID: 399774214}
+  _Item: {fileID: 0}
 --- !u!1 &732852754
 GameObject:
   m_ObjectHideFlags: 0
@@ -4422,10 +4424,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e4fdb4a064d2d4295069c2e38c1663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BuyBtn: {fileID: 753990363}
-  BuyText: {fileID: 1084727278}
-  EquipBtn: {fileID: 652888195}
   globalVariables: {fileID: 1040025202}
+  _BuyBtn: {fileID: 753990363}
+  _EquipBtn: {fileID: 652888195}
+  _EquippedBtn: {fileID: 451925066}
+  _Item: {fileID: 0}
 --- !u!1 &802052759
 GameObject:
   m_ObjectHideFlags: 0
@@ -4633,8 +4636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5727051aa04167469de2d03ca1bd0c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EquipBtn: {fileID: 856256184}
-  EquippedBtn: {fileID: 1274092942}
+  targetButton: {fileID: 1274092942}
   Item: {fileID: 1470530981}
 --- !u!114 &856256186
 MonoBehaviour:
@@ -4680,9 +4682,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 856256184}
+      - m_Target: {fileID: 856256185}
         m_TargetAssemblyTypeName: EquipItem, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: ToggleEquipBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5062,8 +5064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5727051aa04167469de2d03ca1bd0c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EquipBtn: {fileID: 988314852}
-  EquippedBtn: {fileID: 129286045}
+  targetButton: {fileID: 129286045}
   Item: {fileID: 1586486252}
 --- !u!1 &1012054351
 GameObject:
@@ -5393,10 +5394,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e4fdb4a064d2d4295069c2e38c1663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BuyBtn: {fileID: 1073377830}
-  BuyText: {fileID: 343372881}
-  EquipBtn: {fileID: 83481262}
   globalVariables: {fileID: 1040025202}
+  _BuyBtn: {fileID: 1073377830}
+  _EquipBtn: {fileID: 83481262}
+  _EquippedBtn: {fileID: 1347622879}
+  _Item: {fileID: 0}
 --- !u!1 &1079855011
 GameObject:
   m_ObjectHideFlags: 0
@@ -5767,7 +5769,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1233778375}
         m_TargetAssemblyTypeName: EquipClothe, Assembly-CSharp
-        m_MethodName: ToggleEquipBtn
+        m_MethodName: ToggleEquippedBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5960,8 +5962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5727051aa04167469de2d03ca1bd0c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EquipBtn: {fileID: 1266062108}
-  EquippedBtn: {fileID: 672735992}
+  targetButton: {fileID: 672735992}
   Item: {fileID: 188637027}
 --- !u!1 &1267285063
 GameObject:
@@ -6109,8 +6110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5727051aa04167469de2d03ca1bd0c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EquipBtn: {fileID: 856256184}
-  EquippedBtn: {fileID: 1274092942}
+  targetButton: {fileID: 856256184}
   Item: {fileID: 1470530981}
 --- !u!114 &1274092945
 MonoBehaviour:
@@ -6352,10 +6352,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e4fdb4a064d2d4295069c2e38c1663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BuyBtn: {fileID: 1281824183}
-  BuyText: {fileID: 1012054351}
-  EquipBtn: {fileID: 988314852}
   globalVariables: {fileID: 1040025202}
+  _BuyBtn: {fileID: 1281824183}
+  _EquipBtn: {fileID: 988314852}
+  _EquippedBtn: {fileID: 129286045}
+  _Item: {fileID: 1586486252}
 --- !u!1 &1347622879
 GameObject:
   m_ObjectHideFlags: 0
@@ -6458,7 +6459,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1347622881}
         m_TargetAssemblyTypeName: EquipClothe, Assembly-CSharp
-        m_MethodName: ToggleEquipBtn
+        m_MethodName: ToggleEquippedBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6877,10 +6878,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e4fdb4a064d2d4295069c2e38c1663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BuyBtn: {fileID: 1479876108}
-  BuyText: {fileID: 630753626}
-  EquipBtn: {fileID: 1266062108}
   globalVariables: {fileID: 1040025202}
+  _BuyBtn: {fileID: 1479876108}
+  _EquipBtn: {fileID: 1266062108}
+  _EquippedBtn: {fileID: 672735992}
+  _Item: {fileID: 188637027}
 --- !u!1 &1519374814
 GameObject:
   m_ObjectHideFlags: 0
@@ -8325,8 +8327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5727051aa04167469de2d03ca1bd0c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EquipBtn: {fileID: 408374309}
-  EquippedBtn: {fileID: 1867788443}
+  targetButton: {fileID: 408374309}
   Item: {fileID: 1519374814}
 --- !u!114 &1867788446
 MonoBehaviour:
@@ -8524,7 +8525,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1903345830}
         m_TargetAssemblyTypeName: EquipClothe, Assembly-CSharp
-        m_MethodName: ToggleEquipBtn
+        m_MethodName: ToggleEquippedBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
