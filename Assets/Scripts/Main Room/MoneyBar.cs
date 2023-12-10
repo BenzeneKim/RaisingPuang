@@ -20,18 +20,18 @@ public class MoneyBar : MonoBehaviour
     private void UpdateBar(int money)
     {
         float percentage = money / max;
-        Txt.text = $"$ {GameManager.Instance.Money}";
+        Txt.text = $"$ {GameManager.instance.Money}";
     }
 
     private void Update()
     {
-        UpdateBar(GameManager.Instance.Money);
+        UpdateBar(GameManager.instance.Money);
     }
 
     // This method is called whenever you want to update the bar with a specific value
     public void SetMoney(int money)
     {
-        GameManager.Instance.Money = money;
+        GameManager.instance.Money = money;
         UpdateBar(money);
     }
 }

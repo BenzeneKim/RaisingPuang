@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance; // Singleton instance
+    public static GameManager instance; // Singleton instance
 
     // Your global variables
     public int Money;
@@ -14,26 +14,35 @@ public class GameManager : MonoBehaviour
     public int State = 0;
     public int PuangAge = 1;
     public int[] LevelLimit = new int[10];
-    [SerializeField] private List<BuyItem> BuyButtons;
-    
+    [SerializeField] private List<BuyItem> BuyButtons = new List<BuyItem>();
+
+
     private void Awake()
     {
         // Ensure there is only one instance of GlobalVariables
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
 
         Money = PlayerPrefs.GetInt("Money");
         Jelly = PlayerPrefs.GetInt("Jelly");
         State = PlayerPrefs.GetInt("State");                  // nothing = 0, jaket = 1, hoodie = 2, Raincoat = 3, Banana = 4, Santa = 5
-        PuangAge = PlayerPrefs.GetInt("PuangAge");                  // nothing = 0, jaket = 1, hoodie = 2, Raincoat = 3, Banana = 4, Santa = 5
-
+        PuangAge = PlayerPrefs.GetInt("PuangAge") == 0 ? 1 : PlayerPrefs.GetInt("PuangAge");                  // nothing = 0, jaket = 1, hoodie = 2, Raincoat = 3, Banana = 4, Santa = 5
+        BuyButtons.Add(GameObject.Find("JacketBuyButton").GetComponent<BuyItem>());
+        BuyButtons.Add(GameObject.Find("HoodieBuyButton").GetComponent<BuyItem>());
+        BuyButtons.Add(GameObject.Find("RaincoatBuyButton").GetComponent<BuyItem>());
+        BuyButtons.Add(GameObject.Find("BananaBuyButton").GetComponent<BuyItem>());
+        BuyButtons.Add(GameObject.Find("SantaBuyButton").GetComponent<BuyItem>());
+        BuyButtons.Add(GameObject.Find("WoodenWheelBuyButton").GetComponent<BuyItem>());
+        BuyButtons.Add(GameObject.Find("ScratBuyButton").GetComponent<BuyItem>());
+        BuyButtons.Add(GameObject.Find("WoodenTowerBuyButton").GetComponent<BuyItem>());
+        BuyButtons.Add(GameObject.Find("WoodenShelfBuyButton").GetComponent<BuyItem>());
         int[] StateArray = Parse(State);
         for(int i = 0; i < 9; i++)
         {
@@ -54,21 +63,21 @@ public class GameManager : MonoBehaviour
         List<int> _temp = new List<int>();
         for(int i = 0; i < 9; i++)
         {
-            _temp.Add(state % 3);
-            state /= 3;
+            _temp.Add((int)state / (int)(Mathf.Pow(3,8-i)));
+            state = state - ((int)Mathf.Pow(3, 8 - i)*_temp[i]);
         }
+        Debug.Log($"{_temp[0]}{_temp[1]}{_temp[2]}{_temp[3]}{_temp[4]}{_temp[5]}{_temp[6]}{_temp[7]}{_temp[8]}");
+        _temp.Reverse();
         return _temp.ToArray();
     }
-
-    private void OnDestroy()
+    
+    public void Save()
     {
         PlayerPrefs.SetInt("Money", Money);
         PlayerPrefs.SetInt("Jelly", Jelly);
         PlayerPrefs.SetInt("State", State);
         PlayerPrefs.SetInt("PuangAge", PuangAge);
     }
-
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return))
@@ -78,5 +87,18 @@ public class GameManager : MonoBehaviour
             State = 0;
             PuangAge = 1;
         }
+    }
+
+    public void OnApplicationQuit()
+    {
+        PlayerPrefs.SetInt("Money", Money);
+        PlayerPrefs.SetInt("Jelly", Jelly);
+        PlayerPrefs.SetInt("State", State);
+        PlayerPrefs.SetInt("PuangAge", PuangAge);
+    }
+    public void Quit()
+    {
+
+        Application.Quit();
     }
 }

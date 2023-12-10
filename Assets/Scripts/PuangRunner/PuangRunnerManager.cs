@@ -16,6 +16,7 @@ public class PuangRunnerManager : MonoBehaviour
     private int _score=0;
     private int _levelUpCounter = 0;
     private int _destinationScore = 50;
+    [SerializeField] private AudioSource _levelupSound;
     void Start()
     {
         StartCoroutine(ReadyGame());
@@ -29,12 +30,14 @@ public class PuangRunnerManager : MonoBehaviour
 
     public void Die()
     {
+        this.gameObject.GetComponent<AudioSource>().Stop();
         platformManager.StopScroll();
         backgroundController.StopScroll();
         obstacleManager.StopGenerate();
         jellyManager.StopGenerate();
         uiManager.ShowEndWindow(_score);
-        GameManager.Instance.Jelly += _score;
+        GameManager.instance.Jelly += _score;
+        GameManager.instance.Save();
     }
 
     public void End()
@@ -50,6 +53,8 @@ public class PuangRunnerManager : MonoBehaviour
             _levelUpCounter = 0;
             speed++;
             _destinationScore += 30;
+            _levelupSound.Play();
+
         }
         uiManager.UpdateScore(_score);
     }
@@ -97,6 +102,7 @@ public class PuangRunnerManager : MonoBehaviour
 
     IEnumerator ReadyGame()
     {
+        this.gameObject.GetComponent<AudioSource>().Play();
         puang.Init();
         StartCoroutine (uiManager.fadeScreen.FadeIn());
         yield return null;

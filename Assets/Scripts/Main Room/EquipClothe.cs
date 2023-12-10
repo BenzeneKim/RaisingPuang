@@ -8,31 +8,30 @@ public class EquipClothe : MonoBehaviour
     public GameObject EquippedBtn;
     public Sprite Item;
     public GameObject Puang;
-    public GameManager globalVariables;
     [SerializeField] private int index;
     private void Start()
     {
         Puang.SetActive(true);
     }
 
-    public void ToggleEquipBtn()
+    public void ToggleEquipBtn(bool init = false)
     {
-        if (globalVariables.ClothState != 0) return;
+        if (GameManager.instance.ClothState != 0) return;
         EquipBtn.SetActive(false);
         EquippedBtn.SetActive(true);
         Puang.GetComponent<SpriteRenderer>().sprite = Item;
-        globalVariables.State += (int)Mathf.Pow(3, index);
-        globalVariables.ClothState = index + 1;
+        if (!init) GameManager.instance.State += (int)Mathf.Pow(3, index);
+        GameManager.instance.ClothState = index + 1;
     }
 
-    public void ToggleEquippedBtn()
+    public void ToggleEquippedBtn(bool init = false)
     {
-        if (globalVariables.ClothState == 0) return;
+        if (GameManager.instance.ClothState == 0) return;
         EquipBtn.SetActive(true);
         EquippedBtn.SetActive(false);
         Puang.GetComponent<SpriteRenderer>().sprite = Item;
-        globalVariables.State -= (int)Mathf.Pow(3, index);
-        globalVariables.ClothState = 0;
+        if (!init) GameManager.instance.State -= (int)Mathf.Pow(3, index);
+        GameManager.instance.ClothState = 0;
     }
 }
 

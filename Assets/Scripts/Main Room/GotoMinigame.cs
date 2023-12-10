@@ -6,6 +6,8 @@ public class GotoMinigame : MonoBehaviour
 {
     public void ChangeScene()
     {
+        GameManager.instance.ClothState = 0;
+        GameManager.instance.Save();
         SceneManager.LoadScene(1);
     }
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BuyItem : MonoBehaviour
 {
-    public GameManager globalVariables;
     [SerializeField] private GameObject _BuyBtn;
     //[SerializeField] private GameObject _BuyText;
     [SerializeField] private GameObject _EquipBtn;
@@ -22,15 +21,15 @@ public class BuyItem : MonoBehaviour
 
     public void ToggleBuyBtn()
     {
-        if (globalVariables.Money >= 5000)
+        if (GameManager.instance.Money >= 5000)
         {
             if (_BuyBtn != null && _EquipBtn != null)
             {
                 _BuyBtn.SetActive(false);
                 //_BuyText.SetActive(false);
                 _EquipBtn.SetActive(true);
-                globalVariables.Money -= 5000;
-                globalVariables.State += (int)Mathf.Pow(3, index);
+                GameManager.instance.Money -= 5000;
+                GameManager.instance.State += (int)Mathf.Pow(3, index);
             }
         }
     }
@@ -42,8 +41,8 @@ public class BuyItem : MonoBehaviour
             case true:
                 _BuyBtn?.SetActive(false);
                 _EquipBtn?.SetActive(true);
-                _EquipBtn?.GetComponent<EquipClothe>()?.ToggleEquipBtn();
-                _EquipBtn?.GetComponent<EquipItem>()?.ToggleEquipBtn();
+                _EquipBtn?.GetComponent<EquipClothe>()?.ToggleEquipBtn(true);
+                _EquipBtn?.GetComponent<EquipItem>()?.ToggleEquipBtn(true);
                 break;
             case false:
                 _BuyBtn?.SetActive(false);

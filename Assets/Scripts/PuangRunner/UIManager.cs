@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
 
     public FadeScreen fadeScreen;
     public bool countDownDone = false;
+    [SerializeField] private AudioSource _countdownSound;
     [SerializeField]
     private List<GameObject> _countdown = new List<GameObject>(3);
     // Start is called before the first frame update
@@ -63,14 +64,17 @@ public class UIManager : MonoBehaviour
 
         _scoreBar.text = "0";
         countDownDone = false;
+        _countdownSound.Play();
         _countdown[0].active = true;
         _countdown[1].active = false;
         _countdown[2].active = false;
         yield return new WaitForSeconds(1);
+        _countdownSound.Play();
         _countdown[0].active = false;
         _countdown[1].active = true;
         _countdown[2].active = false;
         yield return new WaitForSeconds(1);
+        _countdownSound.Play();
         _countdown[0].active = false;
         _countdown[1].active = false;
         _countdown[2].active = true;

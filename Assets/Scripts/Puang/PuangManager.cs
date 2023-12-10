@@ -142,11 +142,13 @@ public class PuangManager : MonoBehaviour
                 switch (_state)
                 {
                     case PuangState.JUMP:
+                        this.gameObject.GetComponent<AudioSource>().Play();
                         _state = PuangState.DOUBLE_JUMP;
                         this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                         this.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, _jumpPower), ForceMode2D.Impulse);
                         break;
                     case PuangState.RUNNING:
+                        this.gameObject.GetComponent<AudioSource>().Play();
                         _state = PuangState.JUMP;
                         this.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, _jumpPower), ForceMode2D.Impulse);
                         yield return new WaitForSeconds(0.1f);
@@ -170,6 +172,7 @@ public class PuangManager : MonoBehaviour
         if (collision.gameObject.tag == "Jelly")
         {
             PuangRunnerManager.instance.IncScore();
+            collision.gameObject.transform.parent.gameObject.GetComponent<AudioSource>().Play();
             collision.gameObject.SetActive(false);
         }
 
