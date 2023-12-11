@@ -15,11 +15,11 @@ public class CanBar : MonoBehaviour
     
     private void UpdateBar()
     {
-        Txt.text = $"{GameManager.instance.Jelly} / {GameManager.instance.LevelLimit[GameManager.instance.PuangAge-1]}";
+        Txt.text = $"{GameManager.instance.Can} / {GameManager.instance.LevelLimit[GameManager.instance.PuangAge-1]}";
         Txt2.text = $"{GameManager.instance.PuangAge}00$ / click";
-        if(GameManager.instance.Jelly > GameManager.instance.LevelLimit[GameManager.instance.PuangAge - 1])
+        if(GameManager.instance.Can > GameManager.instance.LevelLimit[GameManager.instance.PuangAge - 1])
         {
-            GameManager.instance.Jelly -= GameManager.instance.LevelLimit[GameManager.instance.PuangAge - 1];
+            GameManager.instance.Can -= GameManager.instance.LevelLimit[GameManager.instance.PuangAge - 1];
             GameManager.instance.PuangAge++;
         }
     }

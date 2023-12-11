@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
-public class JellyManager: MonoBehaviour
+public class CanManager: MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
-    private List<GameObject> _jellies = new List<GameObject>(35);
+    private List<GameObject> _can = new List<GameObject>(0);
     private GameObject _activedObstacle;
     [SerializeField]
     private ObstacleManager _obstacleManager;
@@ -24,6 +24,10 @@ public class JellyManager: MonoBehaviour
     private bool updatePosition = false;
     void Start()
     {
+        for (int i = 0; i < gameObject.transform.childCount; i++)
+        {
+            _can.Add(gameObject.transform.GetChild(i).gameObject);
+        }
         Init();
     }
 
@@ -33,12 +37,12 @@ public class JellyManager: MonoBehaviour
         if (updatePosition)
         {
 
-            foreach (GameObject activatedJelly in _jellies)
+            foreach (GameObject activatedCan in _can)
             {
-                activatedJelly.transform.Translate(new Vector2(-1, 0) * Time.deltaTime * PuangRunnerManager.instance.speed, 0);
-                if (activatedJelly.transform.position.x < -12)
+                activatedCan.transform.Translate(new Vector2(-1, 0) * Time.deltaTime * PuangRunnerManager.instance.speed, 0);
+                if (activatedCan.transform.position.x < -12)
                 {
-                    activatedJelly.SetActive(false);
+                    activatedCan.SetActive(false);
                 }
             }
         }
@@ -46,7 +50,7 @@ public class JellyManager: MonoBehaviour
     public void Init()
     {
 
-        foreach (GameObject obj in _jellies)
+        foreach (GameObject obj in _can)
             obj.SetActive(false);
     }
 
@@ -65,18 +69,18 @@ public class JellyManager: MonoBehaviour
     {
         while (true)
         {
-            foreach(GameObject unactivatedJelly in _jellies)
+            foreach(GameObject unactivatedCan in _can)
             {
-                if(unactivatedJelly.active == false)
+                if(unactivatedCan.active == false)
                 {
-                    unactivatedJelly.SetActive(true);
+                    unactivatedCan.SetActive(true);
                     if (_obstacleManager.isObstacleActivated)
                     {
                         float distance = _obstacleManager.activatedObstaclePoint.x - 12;
                         float yValue = -_parabolaA * distance * distance + _parabolaB + _obstacleManager.activatedObstaclePoint.y;
-                        unactivatedJelly.transform.position = (yValue < _defaultHeight) ? new Vector2(12, _defaultHeight) : new Vector2(12, yValue);
+                        unactivatedCan.transform.position = (yValue < _defaultHeight) ? new Vector2(12, _defaultHeight) : new Vector2(12, yValue);
                     }
-                    else unactivatedJelly.transform.position = new Vector2(12, _defaultHeight);
+                    else unactivatedCan.transform.position = new Vector2(12, _defaultHeight);
                     break;
                 }
 

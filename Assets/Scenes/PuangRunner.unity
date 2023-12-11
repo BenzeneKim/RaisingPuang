@@ -581,7 +581,7 @@ GameObject:
   - component: {fileID: 122530230}
   m_Layer: 0
   m_Name: Circle (5)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -925,7 +925,7 @@ GameObject:
   - component: {fileID: 187605607}
   m_Layer: 0
   m_Name: Circle (32)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1311,7 +1311,7 @@ GameObject:
   - component: {fileID: 241998573}
   m_Layer: 0
   m_Name: Circle (34)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1431,7 +1431,7 @@ GameObject:
   - component: {fileID: 268276153}
   m_Layer: 0
   m_Name: Circle (31)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1551,7 +1551,7 @@ GameObject:
   - component: {fileID: 281037990}
   m_Layer: 0
   m_Name: Circle (19)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2063,7 +2063,7 @@ GameObject:
   - component: {fileID: 343522564}
   m_Layer: 0
   m_Name: Circle (14)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2958,7 +2958,7 @@ GameObject:
   - component: {fileID: 410611087}
   m_Layer: 0
   m_Name: Circle (2)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3391,7 +3391,7 @@ GameObject:
   - component: {fileID: 576387956}
   m_Layer: 0
   m_Name: Circle (29)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3511,7 +3511,7 @@ GameObject:
   - component: {fileID: 591167350}
   m_Layer: 0
   m_Name: Circle (3)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3631,7 +3631,7 @@ GameObject:
   - component: {fileID: 594062274}
   m_Layer: 0
   m_Name: Circle (7)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3951,7 +3951,7 @@ GameObject:
   - component: {fileID: 671999901}
   m_Layer: 0
   m_Name: Circle (33)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4203,7 +4203,7 @@ GameObject:
   - component: {fileID: 796231276}
   m_Layer: 0
   m_Name: Circle (20)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4323,7 +4323,7 @@ GameObject:
   - component: {fileID: 812153286}
   m_Layer: 0
   m_Name: Circle (10)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4443,7 +4443,7 @@ GameObject:
   - component: {fileID: 828497268}
   m_Layer: 0
   m_Name: Circle (23)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4654,7 +4654,7 @@ GameObject:
   - component: {fileID: 990034276}
   m_Layer: 0
   m_Name: Circle (12)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5062,7 +5062,7 @@ MonoBehaviour:
   uiManager: {fileID: 61427598}
   platformManager: {fileID: 476847525}
   obstacleManager: {fileID: 931823350}
-  jellyManager: {fileID: 1274672595}
+  canManager: {fileID: 1274672595}
   backgroundController: {fileID: 1867683679}
   speed: 10
   _levelupSound: {fileID: 61427603}
@@ -5190,7 +5190,7 @@ GameObject:
   - component: {fileID: 1026528252}
   m_Layer: 0
   m_Name: Circle (26)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5551,7 +5551,7 @@ GameObject:
   - component: {fileID: 1057626827}
   m_Layer: 0
   m_Name: Circle (27)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5885,7 +5885,7 @@ GameObject:
   - component: {fileID: 1155679072}
   m_Layer: 0
   m_Name: Circle (13)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6005,7 +6005,7 @@ GameObject:
   - component: {fileID: 1164906805}
   m_Layer: 0
   m_Name: Circle (4)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6125,7 +6125,7 @@ GameObject:
   - component: {fileID: 1166208607}
   m_Layer: 0
   m_Name: Circle (15)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6470,7 +6470,7 @@ GameObject:
   - component: {fileID: 1218529315}
   m_Layer: 0
   m_Name: Circle (8)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6590,7 +6590,7 @@ GameObject:
   - component: {fileID: 1222342241}
   m_Layer: 0
   m_Name: Circle (25)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6709,7 +6709,7 @@ GameObject:
   - component: {fileID: 1274672595}
   - component: {fileID: 1274672597}
   m_Layer: 0
-  m_Name: JellyGenerator
+  m_Name: CanGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6727,42 +6727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff2fdc18bbcaa645b0b4c25f4150eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jellies:
-  - {fileID: 1330128608}
-  - {fileID: 1922256641}
-  - {fileID: 410611084}
-  - {fileID: 591167347}
-  - {fileID: 1164906802}
-  - {fileID: 122530227}
-  - {fileID: 1354590320}
-  - {fileID: 594062271}
-  - {fileID: 1218529312}
-  - {fileID: 1715874872}
-  - {fileID: 812153283}
-  - {fileID: 1763721299}
-  - {fileID: 990034273}
-  - {fileID: 1155679069}
-  - {fileID: 343522561}
-  - {fileID: 1166208604}
-  - {fileID: 1471485277}
-  - {fileID: 1425053540}
-  - {fileID: 1629880716}
-  - {fileID: 281037987}
-  - {fileID: 796231273}
-  - {fileID: 1667940645}
-  - {fileID: 1880109311}
-  - {fileID: 828497265}
-  - {fileID: 1582448681}
-  - {fileID: 1222342238}
-  - {fileID: 1026528249}
-  - {fileID: 1057626824}
-  - {fileID: 1545162972}
-  - {fileID: 576387953}
-  - {fileID: 1705832809}
-  - {fileID: 268276150}
-  - {fileID: 187605604}
-  - {fileID: 671999898}
-  - {fileID: 241998570}
+  _can: []
   _obstacleManager: {fileID: 931823350}
   _period: 0.2
   _parabolaA: 0.13
@@ -7096,7 +7061,7 @@ GameObject:
   - component: {fileID: 1330128611}
   m_Layer: 0
   m_Name: Circle
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7247,7 +7212,7 @@ GameObject:
   - component: {fileID: 1354590323}
   m_Layer: 0
   m_Name: Circle (6)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7530,7 +7495,7 @@ GameObject:
   - component: {fileID: 1425053543}
   m_Layer: 0
   m_Name: Circle (17)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7650,7 +7615,7 @@ GameObject:
   - component: {fileID: 1471485280}
   m_Layer: 0
   m_Name: Circle (16)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8025,7 +7990,7 @@ GameObject:
   - component: {fileID: 1545162975}
   m_Layer: 0
   m_Name: Circle (28)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8145,7 +8110,7 @@ GameObject:
   - component: {fileID: 1582448684}
   m_Layer: 0
   m_Name: Circle (24)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8623,7 +8588,7 @@ GameObject:
   - component: {fileID: 1629880719}
   m_Layer: 0
   m_Name: Circle (18)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8875,7 +8840,7 @@ GameObject:
   - component: {fileID: 1667940648}
   m_Layer: 0
   m_Name: Circle (21)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8995,7 +8960,7 @@ GameObject:
   - component: {fileID: 1705832812}
   m_Layer: 0
   m_Name: Circle (30)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9115,7 +9080,7 @@ GameObject:
   - component: {fileID: 1715874875}
   m_Layer: 0
   m_Name: Circle (9)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9235,7 +9200,7 @@ GameObject:
   - component: {fileID: 1763721302}
   m_Layer: 0
   m_Name: Circle (11)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9822,7 +9787,7 @@ GameObject:
   - component: {fileID: 1880109314}
   m_Layer: 0
   m_Name: Circle (22)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10072,7 +10037,7 @@ GameObject:
   - component: {fileID: 1922256644}
   m_Layer: 0
   m_Name: Circle (1)
-  m_TagString: Jelly
+  m_TagString: Can
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

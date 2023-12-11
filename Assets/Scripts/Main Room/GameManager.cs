@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     // Your global variables
     public int Money;
-    public int Jelly;
+    public int Can;
     public int ClothState = 0;
     public int State = 0;
     public int PuangAge = 1;
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         }
 
         Money = PlayerPrefs.GetInt("Money");
-        Jelly = PlayerPrefs.GetInt("Jelly");
+        Can = PlayerPrefs.GetInt("Can");
         State = PlayerPrefs.GetInt("State");                  // nothing = 0, jaket = 1, hoodie = 2, Raincoat = 3, Banana = 4, Santa = 5
         PuangAge = PlayerPrefs.GetInt("PuangAge") == 0 ? 1 : PlayerPrefs.GetInt("PuangAge");                  // nothing = 0, jaket = 1, hoodie = 2, Raincoat = 3, Banana = 4, Santa = 5
         BuyButtons.Add(GameObject.Find("JacketBuyButton").GetComponent<BuyItem>());
@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
     public void Save()
     {
         PlayerPrefs.SetInt("Money", Money);
-        PlayerPrefs.SetInt("Jelly", Jelly);
+        PlayerPrefs.SetInt("Can", Can);
         PlayerPrefs.SetInt("State", State);
         PlayerPrefs.SetInt("PuangAge", PuangAge);
     }
@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             Money = 0;
-            Jelly = 0;
+            Can = 0;
             State = 0;
             PuangAge = 1;
         }
@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
     public void OnApplicationQuit()
     {
         PlayerPrefs.SetInt("Money", Money);
-        PlayerPrefs.SetInt("Jelly", Jelly);
+        PlayerPrefs.SetInt("Can", Can);
         PlayerPrefs.SetInt("State", State);
         PlayerPrefs.SetInt("PuangAge", PuangAge);
     }

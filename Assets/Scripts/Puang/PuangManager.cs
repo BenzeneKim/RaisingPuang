@@ -169,7 +169,7 @@ public class PuangManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Jelly")
+        if (collision.gameObject.tag == "Can")
         {
             PuangRunnerManager.instance.IncScore();
             collision.gameObject.transform.parent.gameObject.GetComponent<AudioSource>().Play();

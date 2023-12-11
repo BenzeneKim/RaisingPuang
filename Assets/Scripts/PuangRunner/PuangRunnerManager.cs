@@ -8,7 +8,7 @@ public class PuangRunnerManager : MonoBehaviour
     public UIManager uiManager;
     public PlatformManager platformManager;
     public ObstacleManager obstacleManager;
-    public JellyManager jellyManager;
+    public CanManager canManager;
     public BackgroundController backgroundController;
 
     public int speed;
@@ -34,9 +34,9 @@ public class PuangRunnerManager : MonoBehaviour
         platformManager.StopScroll();
         backgroundController.StopScroll();
         obstacleManager.StopGenerate();
-        jellyManager.StopGenerate();
+        canManager.StopGenerate();
         uiManager.ShowEndWindow(_score);
-        GameManager.instance.Jelly += _score;
+        GameManager.instance.Can += _score;
         GameManager.instance.Save();
     }
 
@@ -74,7 +74,7 @@ public class PuangRunnerManager : MonoBehaviour
         platformManager.StopScroll();
         backgroundController.StopScroll();
         obstacleManager.StopGenerate();
-        jellyManager.StopGenerate();
+        canManager.StopGenerate();
         uiManager.ShowPauseWindow();
         puang.PausePuang();
     }
@@ -84,7 +84,7 @@ public class PuangRunnerManager : MonoBehaviour
         ///todo : reset code
         ///
         obstacleManager.Init();
-        jellyManager.Init();
+        canManager.Init();
         uiManager.HidePauseWindow();
         uiManager.HideEndWindow();
         _score = 0;
@@ -117,10 +117,10 @@ public class PuangRunnerManager : MonoBehaviour
     {
         puang.Run();
         obstacleManager.Init();
-        jellyManager.Init();
+        canManager.Init();
         platformManager.StartScroll();
         backgroundController.StartScroll();
-        jellyManager.StartGenerate();
+        canManager.StartGenerate();
         yield return new WaitForSeconds(1f);
         obstacleManager.StartGenerate();
         yield return null;
@@ -136,7 +136,7 @@ public class PuangRunnerManager : MonoBehaviour
         platformManager.StartScroll();
         backgroundController.StartScroll();
         obstacleManager.StartGenerate();
-        jellyManager.StartGenerate();
+        canManager.StartGenerate();
     }
 
 
