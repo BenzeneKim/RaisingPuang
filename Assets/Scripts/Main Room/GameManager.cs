@@ -1,7 +1,9 @@
 using System;
+using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +17,9 @@ public class GameManager : MonoBehaviour
     public int PuangAge = 1;
     public int[] LevelLimit = new int[10];
     [SerializeField] private List<BuyItem> BuyButtons = new List<BuyItem>();
+    [SerializeField] private Button _connectButton;
+    [SerializeField] private Button _refreshButton;
+    [SerializeField] private TMP_Dropdown _portNames;
 
 
     private void Awake()
@@ -66,7 +71,7 @@ public class GameManager : MonoBehaviour
             _temp.Add((int)state / (int)(Mathf.Pow(3,8-i)));
             state = state - ((int)Mathf.Pow(3, 8 - i)*_temp[i]);
         }
-        Debug.Log($"{_temp[0]}{_temp[1]}{_temp[2]}{_temp[3]}{_temp[4]}{_temp[5]}{_temp[6]}{_temp[7]}{_temp[8]}");
+        //Debug.Log($"{_temp[0]}{_temp[1]}{_temp[2]}{_temp[3]}{_temp[4]}{_temp[5]}{_temp[6]}{_temp[7]}{_temp[8]}");
         _temp.Reverse();
         return _temp.ToArray();
     }
@@ -100,5 +105,16 @@ public class GameManager : MonoBehaviour
     {
 
         Application.Quit();
+    }
+
+    public void Refresh()
+    {
+        _portNames.ClearOptions();
+        _portNames.AddOptions(PedalConnector.instance.GetPortList());
+    }
+
+    public void Connect()
+    {
+        PedalConnector.instance.Connect(_portNames.captionText.text);
     }
 }

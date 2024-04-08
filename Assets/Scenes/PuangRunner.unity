@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.653364, g: 0.77414525, b: 0.8349377, a: 1}
+  m_IndirectSpecularColor: {r: 0.653364, g: 0.7741451, b: 0.8349377, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6347,6 +6347,22 @@ PrefabInstance:
     - target: {fileID: 4533946225262434138, guid: b9e93c8f58af94a4bb9b6039faeec897, type: 3}
       propertyPath: _jumpPower
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4533946225262434138, guid: b9e93c8f58af94a4bb9b6039faeec897, type: 3}
+      propertyPath: _doubleJump
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4533946225262434138, guid: b9e93c8f58af94a4bb9b6039faeec897, type: 3}
+      propertyPath: _singleJump
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4533946225262434138, guid: b9e93c8f58af94a4bb9b6039faeec897, type: 3}
+      propertyPath: _windowSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4533946225262434138, guid: b9e93c8f58af94a4bb9b6039faeec897, type: 3}
+      propertyPath: _filterRange
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6172344928754384085, guid: b9e93c8f58af94a4bb9b6039faeec897, type: 3}
       propertyPath: m_Sprite

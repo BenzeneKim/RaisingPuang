@@ -135,10 +135,13 @@ public class PuangManager : MonoBehaviour
     private IEnumerator InputManager()
     {
         while (_state == PuangState.IDLE) yield return new WaitForSeconds(0.01f);
+        bool keyDown = false;
         while (true)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (keyDown && PedalConnector.instance.pedalValue == 0) keyDown = false;
+            if (!keyDown && PedalConnector.instance.pedalValue == 1)
             {
+                keyDown = true;
                 switch (_state)
                 {
                     case PuangState.JUMP:
