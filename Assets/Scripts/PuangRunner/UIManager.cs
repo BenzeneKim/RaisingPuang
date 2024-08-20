@@ -22,7 +22,8 @@ public class UIManager : MonoBehaviour
     private TextMeshProUGUI finalScoreTMP;
     [SerializeField]
     private TextMeshProUGUI _scoreBar;
-
+    [SerializeField]
+    private Image _timeSpent;
     void Start()
     {
         endWindow.SetActive(false);
@@ -32,7 +33,7 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        _timeSpent.fillAmount = (float)PuangRunnerManager.instance.spentTime / 60;   
     }
 
     public void UpdateScore(int _score)

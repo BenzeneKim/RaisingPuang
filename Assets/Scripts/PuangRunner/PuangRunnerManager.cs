@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,6 +17,9 @@ public class PuangRunnerManager : MonoBehaviour
     private int _score=0;
     private int _levelUpCounter = 0;
     private int _destinationScore = 50;
+    private double _startTime = 0;
+    private double _timerOffset = -500;
+    public double spentTime { get { return _timerOffset + Time.timeAsDouble - _startTime; } }
     [SerializeField] private AudioSource _levelupSound;
     void Start()
     {
@@ -25,7 +29,20 @@ public class PuangRunnerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (spentTime > 60) Succeed();
+    }
+
+    private void Succeed()
+    {
+        puang.Succeed();
+        this.gameObject.GetComponent<AudioSource>().Stop();
+        platformManager.StopScroll();
+        backgroundController.StopScroll();
+        obstacleManager.StopGenerate();
+        canManager.StopGenerate();
+        uiManager.ShowEndWindow(_score);
+        GameManager.instance.Can += _score;
+        GameManager.instance.Save();
     }
 
     public void Die()
@@ -77,6 +94,7 @@ public class PuangRunnerManager : MonoBehaviour
         canManager.StopGenerate();
         uiManager.ShowPauseWindow();
         puang.PausePuang();
+        _timerOffset = spentTime;
     }
 
     public void Restart()
@@ -102,6 +120,7 @@ public class PuangRunnerManager : MonoBehaviour
 
     IEnumerator ReadyGame()
     {
+        _timerOffset = -500;
         this.gameObject.GetComponent<AudioSource>().Play();
         puang.Init();
         StartCoroutine (uiManager.fadeScreen.FadeIn());
@@ -110,6 +129,8 @@ public class PuangRunnerManager : MonoBehaviour
         StartCoroutine(uiManager.Countdown());
         yield return null;
         while (!uiManager.countDownDone) yield return new WaitForSeconds(0.01f);
+        _startTime = Time.timeAsDouble;
+        _timerOffset = 0;
         StartCoroutine(StartGame());
     }
 
@@ -132,6 +153,7 @@ public class PuangRunnerManager : MonoBehaviour
         StartCoroutine(uiManager.Countdown());
         yield return null;
         while (!uiManager.countDownDone) yield return new WaitForSeconds(0.01f);
+        _startTime = Time.timeAsDouble;
         puang.ResumePuang();
         platformManager.StartScroll();
         backgroundController.StartScroll();

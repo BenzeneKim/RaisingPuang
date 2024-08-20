@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -138,8 +139,8 @@ public class PuangManager : MonoBehaviour
         bool keyDown = false;
         while (true)
         {
-            if (keyDown && PedalConnector.instance.pedalValue == 0) keyDown = false;
-            if (!keyDown && PedalConnector.instance.pedalValue == 1)
+            if (keyDown && (PedalConnector.instance.pedalValue == 0 || !Input.GetKey(KeyCode.Space))) keyDown = false;
+            if (!keyDown && (PedalConnector.instance.pedalValue == 1 || Input.GetKey(KeyCode.Space)))
             {
                 keyDown = true;
                 switch (_state)
@@ -186,6 +187,14 @@ public class PuangManager : MonoBehaviour
 
         _state = PuangState.DIE;
         PuangRunnerManager.instance.Die();
+        _pausedVelocity = rb.velocity;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        StopCoroutine(_inputManager);
+    }
+
+    internal void Succeed()
+    {
+        _state = PuangState.IDLE;
         _pausedVelocity = rb.velocity;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         StopCoroutine(_inputManager);
